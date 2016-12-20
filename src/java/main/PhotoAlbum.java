@@ -3,7 +3,7 @@
 package main;
 
 import java.util.*;
-import javax.servlet.ServletContext;
+//import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 public class PhotoAlbum {
