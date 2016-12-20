@@ -35,8 +35,7 @@ public class DisplayAlbumServlet extends HttpServlet {
     protected void handleRequest(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        ServletContext servletContext = request.getServletContext();
-        PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(servletContext);
+        PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(request.getSession());
         if (request.getContentType() != null
                 && request.getContentType().startsWith("multipart/form-data")) {
             this.uploadPhoto(request, pa);

@@ -23,8 +23,7 @@ public class DisplayPhotoServlet extends HttpServlet {
         int index = Integer.parseInt(indexString.trim());
         response.setContentType("image/jpeg");
         try (OutputStream out = response.getOutputStream()) {
-            ServletContext myServletContext = request.getServletContext();
-            PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(myServletContext);
+            PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(request.getSession());
             byte[] bytes = pa.getPhotoData(index);
             for (int i = 0; i < bytes.length; i++) {
                 out.write(bytes[i]);

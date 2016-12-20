@@ -4,6 +4,7 @@ package main;
 
 import java.util.*;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 public class PhotoAlbum {
 
@@ -14,12 +15,20 @@ public class PhotoAlbum {
     private PhotoAlbum() {
     }
     
-    public static PhotoAlbum getPhotoAlbum(ServletContext servletContext) {
-        if (servletContext.getAttribute(ATTRIBUTE_NAME) == null) {
+//    public static PhotoAlbum getPhotoAlbum(ServletContext servletContext) {
+//        if (servletContext.getAttribute(ATTRIBUTE_NAME) == null) {
+//            PhotoAlbum pa = new PhotoAlbum();
+//            servletContext.setAttribute(ATTRIBUTE_NAME, pa);
+//        }
+//        return (PhotoAlbum) servletContext.getAttribute(ATTRIBUTE_NAME);
+//    }
+
+    public static PhotoAlbum getPhotoAlbum(HttpSession session) {
+        if (session.getAttribute(ATTRIBUTE_NAME) == null) {
             PhotoAlbum pa = new PhotoAlbum();
-            servletContext.setAttribute(ATTRIBUTE_NAME, pa);
+            session.setAttribute(ATTRIBUTE_NAME, pa);
         }
-        return (PhotoAlbum) servletContext.getAttribute(ATTRIBUTE_NAME);
+        return (PhotoAlbum) session.getAttribute(ATTRIBUTE_NAME);
     }
 
     public synchronized void addPhoto(String name, byte[] bytes) {

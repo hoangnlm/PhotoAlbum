@@ -19,7 +19,7 @@ public class RemovePhotoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String indexString = request.getParameter("photo");
         int index = new Integer(indexString.trim());
-        PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(request.getServletContext());
+        PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(request.getSession());
         pa.removePhoto(index);
         RequestDispatcher rd = request.getRequestDispatcher("DisplayAlbumServlet");
         rd.forward(request, response);
