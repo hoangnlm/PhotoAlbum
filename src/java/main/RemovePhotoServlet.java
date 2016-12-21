@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "RemovePhotoServlet", urlPatterns = {"/RemovePhotoServlet"})
+@WebServlet(
+        name = "RemovePhotoServlet",
+        urlPatterns = {"/RemovePhotoServlet"}
+)
 public class RemovePhotoServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -21,7 +24,7 @@ public class RemovePhotoServlet extends HttpServlet {
         int index = new Integer(indexString.trim());
         PhotoAlbum pa = PhotoAlbum.getPhotoAlbum(request.getSession());
         pa.removePhoto(index);
-        RequestDispatcher rd = request.getRequestDispatcher("DisplayAlbumServlet");
+        RequestDispatcher rd = request.getRequestDispatcher("album.jsp");
         rd.forward(request, response);
     }
 }
